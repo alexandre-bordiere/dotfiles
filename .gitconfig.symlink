@@ -1,0 +1,9 @@
+[init]
+    defaultBranch = main
+[pager]
+    branch = false
+[push]
+    default = simple
+[user]
+    name = Alexandre Bordiere
+    email = alexandre@bordiere.com
