@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# dot
+#
+# `dot` handles installation, updates, things like that. Run it periodically
+# to make sure you're on the latest and greatest.
+
+set -e
+
+export DOTFILES=$HOME/.dotfiles
+
+# Install homebrew
+$DOTFILES/homebrew/install.sh 2>&1
+
+# Update Homebrew
+brew update
+brew upgrade
+
+# Install software
+$DOTFILES/script/install
