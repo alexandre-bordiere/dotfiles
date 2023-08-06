@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+DOTFILES_ROOT=$(pwd -P)
+
+info () {
+  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+
+  exit
+}
+
+link_file () {
+  local src=$1 dst=$2
+
+  rm -rf "$dst"
+  ln -s "$src" "$dst"
+
+  success "Linked: $src to $dst"
+}
+
+create_code_directory() {
+  mkdir -p $HOME/Code
+}
+
+install_dependencies() {
+  info "Installing dependencies..."
+
+  if source bin/dot | while read -r data; do info "$data"; done; then
+    success "Dependencies installed"
+  else
+    fail "Error installing dependencies"
+  fi
+}
+
+install_dotfiles () {
+  info "Installing dotfiles..."
+
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink'); do
+    link_file "$src" "$HOME/.$(basename "${src%.*}")"
+  done
+}
+
+set_macos_defaults() {
+  exec $DOTFILES_ROOT/macos/set-defaults.sh
+}
+
+echo ""
+
+create_code_directory
+install_dependencies
+install_dotfiles
+set_macos_defaults
+
+echo ""
+echo "  All installed!"

@@ -1,0 +1,14 @@
+[init]
+    defaultBranch = main
+[pager]
+    branch = false
+[pull]
+    rebase = true
+[push]
+    autoSetupRemote = true
+    default = simple
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+[user]
+    name = Alexandre Bordiere
+    email = alexandrebordiere@gmail.com
