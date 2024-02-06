@@ -219,6 +219,12 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
+# Set Dock size
+defaults write com.apple.dock tilesize -int 64
+
+# Lock the Dock size
+defaults write com.apple.dock size-immutable -bool true
+
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
