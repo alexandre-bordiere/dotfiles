@@ -1,0 +1,10 @@
+# Customise $PATH
+export PATH="${PATH}:${HOME}/.bin"
+
+# Load all the ZSH files within the $HOME directory
+for file in $(ls $HOME/.*/*.zsh); do
+  source $file
+done
+
+# Initialize Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
