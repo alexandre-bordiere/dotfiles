@@ -1,0 +1,17 @@
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[init]
+    defaultBranch = main
+[pager]
+    branch = false
+[pull]
+    rebase = true
+[push]
+    autoSetupRemote = true
+    default = simple
+[user]
+    name = Alexandre Bordiere
+    email = alexandre@bordiere.com
+	signingkey = /Users/alexandrebordiere/.ssh/github_sign.pub

@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# Quick shortcut to Visual Studio Code.
+#
+# USAGE:
+#
+#   $ e
+#   # => opens the current directory in VSCode
+#
+#   $ e .
+#   $ e /usr/local
+#   # => opens the specified directory in VSCode
+
+code "${1:-.}"
